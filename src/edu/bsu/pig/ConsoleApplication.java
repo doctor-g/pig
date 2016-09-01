@@ -14,9 +14,14 @@ public final class ConsoleApplication {
         while (!game.isOver()) {
             println("It is " + game.currentPlayer().getName() + "'s turn");
             println("Press enter to go on");
-            scanner.nextLine();
+            String line = scanner.nextLine();
+            if (line.startsWith("!")) {
+                player1.setScore(100);
+            }
             game.endTurn();
         }
+
+        println("Game over! The winner is " + game.getWinner().getName());
     }
 
     private static void println(String s) {

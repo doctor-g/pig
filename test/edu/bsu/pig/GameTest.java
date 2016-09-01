@@ -39,4 +39,11 @@ public final class GameTest {
         game.endTurn();
         Assert.assertTrue(game.isOver());
     }
+
+    @Test
+    public void testGetWinner_player1Has100Points() {
+        player1.setScore(100);
+        game.endTurn();
+        Assert.assertEquals(player1, game.getWinner());
+    }
 }
