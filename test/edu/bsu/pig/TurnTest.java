@@ -45,4 +45,12 @@ public class TurnTest {
         turn.end();
         Assert.assertEquals(10, turn.getPlayer().getScore());
     }
+
+    @Test
+    public void testRoll_rollOneWithSomeScore_turnScoreBecomesZero() {
+        Turn turn = makeTurnWithFixedDieValue(1);
+        turn.setScore(10);
+        turn.roll();
+        Assert.assertEquals(0, turn.getScore());
+    }
 }
