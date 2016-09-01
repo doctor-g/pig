@@ -12,6 +12,8 @@ public final class ConsoleApplication {
 
         println("Welcome to the Game of Pig");
         while (!game.isOver()) {
+            println(player1.getName() + "'s score is " + player1.getScore());
+            println(player2.getName() + "'s score is " + player2.getScore());
             println("It is " + game.currentPlayer().getName() + "'s turn");
             println("Press enter to go on");
             String line = scanner.nextLine();
