@@ -2,10 +2,10 @@ package edu.bsu.pig;
 
 public final class Turn {
 
-    private FixedValueDie die;
+    private Die die;
     private int score = 0;
 
-    public Turn(FixedValueDie die) {
+    public Turn(Die die) {
         this.die = die;
     }
 
@@ -14,7 +14,7 @@ public final class Turn {
     }
 
     public void roll() {
-        score += die.getValue();
+        score += die.roll();
     }
 
     void setScore(int score) {
