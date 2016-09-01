@@ -46,4 +46,9 @@ public final class GameTest {
         game.endTurn();
         Assert.assertEquals(player1, game.getWinner());
     }
+
+    @Test(expected = IllegalStateException.class)
+    public void testGetWinner_noWinner() {
+        game.getWinner();
+    }
 }
