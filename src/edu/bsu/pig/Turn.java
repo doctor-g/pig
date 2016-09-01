@@ -6,6 +6,7 @@ public final class Turn {
     private Player player;
     private Die die;
     private int score = 0;
+    private boolean isOver = false;
 
     public Turn(Player player, Die die) {
         this.player = player;
@@ -16,13 +17,15 @@ public final class Turn {
         return score;
     }
 
-    public void roll() {
+    public int roll() {
         int roll = die.roll();
         if (roll==BUST_ROLL) {
             score = 0;
+            isOver = true;
         } else {
-            score += die.roll();
+            score += roll;
         }
+        return roll;
     }
 
     void setScore(int score) {
@@ -31,9 +34,14 @@ public final class Turn {
 
     public void end() {
         this.player.setScore(player.getScore() + this.score);
+        this.isOver = true;
     }
 
     public Player getPlayer() {
         return player;
+    }
+
+    public boolean isOver() {
+        return isOver;
     }
 }

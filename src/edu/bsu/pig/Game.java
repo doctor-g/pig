@@ -2,7 +2,7 @@ package edu.bsu.pig;
 
 public final class Game {
 
-    private static final RolledDie DIE = new RolledDie();
+    private static final Die DIE = new RolledDie();
     private static final int POINTS_TO_WIN = 100;
 
     private final Player player1;
@@ -21,12 +21,15 @@ public final class Game {
         return turn.getPlayer();
     }
 
-    public void endTurn() {
+    public void bankAndEndTurn() {
         turn.end();
         if (currentPlayer().getScore() >= POINTS_TO_WIN) {
             this.winner = currentPlayer();
             this.isOver = true;
         }
+    }
+
+    public void startNextTurn() {
         turn = new Turn(nextPlayer(), DIE);
     }
 
@@ -46,8 +49,8 @@ public final class Game {
         }
     }
 
-    public void roll() {
-        turn.roll();
+    public int roll() {
+        return turn.roll();
     }
 
     public Turn currentTurn() {

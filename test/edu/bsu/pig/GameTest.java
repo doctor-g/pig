@@ -23,8 +23,8 @@ public final class GameTest {
     }
 
     @Test
-    public void testCurrentPlayer_firstTurnEnded() {
-        game.endTurn();
+    public void testStartNextTurn() {
+        game.startNextTurn();
         Assert.assertEquals(player2, game.currentPlayer());
     }
 
@@ -36,14 +36,14 @@ public final class GameTest {
     @Test
     public void testIsOver_player1Has100Points() {
         player1.setScore(100);
-        game.endTurn();
+        game.bankAndEndTurn();
         Assert.assertTrue(game.isOver());
     }
 
     @Test
     public void testGetWinner_player1Has100Points() {
         player1.setScore(100);
-        game.endTurn();
+        game.bankAndEndTurn();
         Assert.assertEquals(player1, game.getWinner());
     }
 
